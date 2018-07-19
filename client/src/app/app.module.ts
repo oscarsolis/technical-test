@@ -23,6 +23,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 // modules
 import { CoreModule } from './core/core.module';
+import { NgProgressModule } from '@ngx-progressbar/core';
+import { NgProgressRouterModule } from '@ngx-progressbar/router';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { CoreModule } from './core/core.module';
     BrowserModule,
     CoreModule,
     AppRoutingModule,
+    NgProgressModule.forRoot(),
+    NgProgressRouterModule,
     HttpClientModule,
     BrowserAnimationsModule
   ],

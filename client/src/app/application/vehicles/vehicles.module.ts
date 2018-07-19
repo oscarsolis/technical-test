@@ -25,11 +25,14 @@ import {
 
 // modules
 import { SharedModule } from '../../shared';
+import { MomentModule } from 'ngx-moment';
+
 
 @NgModule({
   imports: [
     CommonModule,
     VehiclesRoutingModule,
+    MomentModule,
     SharedModule,
     MatIconModule,
     MatCardModule,

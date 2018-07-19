@@ -23,7 +23,9 @@
                                     <tr *ngFor="let log of logs">
                                         <td>{{ log.fullName }}</td>
                                         <td>{{ log.ip }}</td>
-                                        <td>{{ log.date }}</td>
+                                        <td>
+                                            {{ log.date | amLocale:'es' | amDateFormat:'DD MMMM YYYY, h:mm a'}}
+                                        </td>
                                         <td>{{ log.action }}</td>
                                         <td>{{ log.nameCollection }}</td>
                                     </tr>

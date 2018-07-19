@@ -10,6 +10,7 @@ import { LogsComponent } from './logs.component';
 
 // modules
 import { SharedModule } from '../../shared';
+import { MomentModule } from 'ngx-moment';
 
 // angular material
 import {
@@ -22,6 +23,7 @@ import {
   imports: [
     CommonModule,
     LogsRoutingModule,
+    MomentModule,
     SharedModule,
     MatCardModule,
     MatButtonModule,

@@ -23,7 +23,9 @@
                                     <tr *ngFor="let vehicle of vehicles">
                                         <td>{{ vehicle.type }}</td>
                                         <td>{{ vehicle.plate }}</td>
-                                        <td>{{ vehicle.dateSOAT }}</td>
+                                        <td>
+                                            {{ vehicle.dateSOAT | amLocale:'es' | amDateFormat:'DD MMMM YYYY' }}
+                                        </td>
                                         <td class="text-capitalize">{{ vehicle.model }}</td>
                                         <td>
                                             <a mat-icon-button color="primary" matTooltip="Editar Vehiculo" matTooltipPosition="after" [routerLink]="[ 'edit', vehicle._id ]">
