@@ -30,6 +30,14 @@ a {
     margin: 0px;
 }
 
+.m-b-50 {
+    margin-bottom: 50px;
+}
+
+.p-b-50 {
+    padding-bottom: 50px;
+}
+
 .flex-center {
     justify-content: center;
     align-content: center;
@@ -47,5 +55,6 @@ a {
 }
 
 @import "~bootstrap/scss/bootstrap.scss";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
 //@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';

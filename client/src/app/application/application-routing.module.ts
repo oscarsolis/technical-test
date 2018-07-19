@@ -27,6 +27,10 @@ const routes: Routes = [
         loadChildren: './vehicles/vehicles.module#VehiclesModule'
       },
       {
+        path: 'routes',
+        loadChildren: './routes/routes.module#RoutesModule'
+      },
+      {
         path: 'logs',
         loadChildren: './logs/logs.module#LogsModule'
       }

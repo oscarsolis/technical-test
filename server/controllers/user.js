@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
-const jwt = require('jsonwebtoken');
-const env = process.env.ENVIROMENT || 'development';
-const config = require('../config/environments/' + env);
 const {
 	respond,
 	registerLog

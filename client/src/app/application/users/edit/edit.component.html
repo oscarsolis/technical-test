@@ -71,7 +71,7 @@
                                     <mat-icon>close</mat-icon> Cancelar
                                 </a>
                                 <button mat-button color="primary" [disabled]="userForm.invalid || sendData">
-                                  <mat-icon>check</mat-icon> Editar
+                                  <mat-icon>check</mat-icon> {{ sendData ? 'Enviando...' : 'Editar' }}
                                 </button>
                             </div>
                         </div>

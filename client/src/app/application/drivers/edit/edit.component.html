@@ -72,8 +72,8 @@
                                     <mat-icon>close</mat-icon> Cancelar
                                 </a>
                                 <button mat-button color="primary" [disabled]="driverForm.invalid || sendData">
-                          <mat-icon>check</mat-icon> Guardar
-                        </button>
+                                    <mat-icon>check</mat-icon> {{ sendData ? 'Enviando...' : 'Editar' }}
+                                  </button>
                             </div>
                         </div>
                     </div>

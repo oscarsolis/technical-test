@@ -1,0 +1,116 @@
+<div class="row">
+    <div class="col-md-12 p-b-50">
+        <loading #loading></loading>
+
+        <mat-card class="example-card" *ngIf="!loading.isVisible()">
+            <mat-card-header>
+                <mat-card-title>Asignación de rutas</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <form [formGroup]="routeForm" (ngSubmit)="createAssign()" #form="ngForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="input-full">
+                                <mat-select placeholder="Conductores" formControlName="driver">
+                                    <mat-option *ngFor="let driver of drivers" [value]="driver._id">
+                                        {{ driver.fullName() }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="input-full">
+                                <mat-select placeholder="Vehiculo" formControlName="vehicle">
+                                    <mat-option *ngFor="let vehicle of vehicles" [value]="vehicle._id">
+                                        {{ vehicle.type + ' - ' + vehicle.plate }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="input-full">
+                                <input matInput type="text" formControlName="passengers">
+                                <mat-placeholder>
+                                    Pasajeros
+                                    <span class="star">*</span>
+                                </mat-placeholder>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="input-full">
+                                <input matInput type="text" formControlName="company">
+                                <mat-placeholder>
+                                    Compañia
+                                    <span class="star">*</span>
+                                </mat-placeholder>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="input-full">
+                                <input matInput type="text" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" formControlName="startTime" (focus)="dt1.open()">
+                                <mat-placeholder>
+                                    Fecha de inicio
+                                    <span class="star">*</span>
+                                </mat-placeholder>
+                            </mat-form-field>
+                            <owl-date-time [pickerMode]="'dialog'" #dt1></owl-date-time>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="input-full">
+                                <input matInput type="text" formControlName="endTime" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" (focus)="dt2.open()">
+                                <mat-placeholder>
+                                    Fecha de fin
+                                    <span class="star">*</span>
+                                </mat-placeholder>
+                            </mat-form-field>
+                            <owl-date-time [pickerMode]="'dialog'" #dt2></owl-date-time>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Punto inicial</p>
+                            <mat-form-field class="input-full">
+                                <input matInput type="text" places-auto-complete [types]="['geocode']" (place_changed)="placeChanged($event,'map1')" [componentRestrictions]="{ country: 'MX' }">
+                                <mat-placeholder>
+                                    Buscar dirección
+                                    <span class="star">*</span>
+                                </mat-placeholder>
+                            </mat-form-field>
+                            <ngui-map [options]="mapOptions" (mapReady$)="mapReady($event,'map1')" class="map">
+                                <img src="assets/imgs/marker_start.png" alt="Punto final" class="img-marker">
+
+                            </ngui-map>
+                        </div>
+                        <div class="col-md-6">
+                            <p>Punto final</p>
+                            <mat-form-field class="input-full">
+                                <input matInput type="text" places-auto-complete [types]="['geocode']" (place_changed)="placeChanged($event,'map2')" [componentRestrictions]="{ country: 'MX' }">
+                                <mat-placeholder>
+                                    Buscar dirección
+                                    <span class="star">*</span>
+                                </mat-placeholder>
+                            </mat-form-field>
+                            <ngui-map [options]="mapOptions" (mapReady$)="mapReady($event,'map2')" class="map">
+                                <img src="assets/imgs/marker_end.png" alt="Punto final" class="img-marker">
+                            </ngui-map>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="buttons-wrapper">
+                                <button mat-button color="primary" [disabled]="routeForm.invalid || sendData">
+                                    <mat-icon>check</mat-icon> {{ sendData ? 'Enviando...'  : 'Guardar' }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

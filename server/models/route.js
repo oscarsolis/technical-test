@@ -37,13 +37,11 @@ const RouteSchema = new Schema({
 		}
   },
   startTime: {
-  	type: String,
-    trim: true,
+  	type: Date,
     required: [true, lang.validations.required]
   },
   endTime: {
-  	type: String,
-    trim: true,
+  	type: Date,
     required: [true, lang.validations.required]
   },
   passengers: {
