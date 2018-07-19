@@ -1,0 +1,105 @@
+<div class="row">
+    <div class="col-md-12">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Registro de usuarios</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <form [formGroup]="userForm" (ngSubmit)="registerUser()" #form="ngForm">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <mat-form-field class="input-full">
+                                <input matInput type="text" formControlName="name">
+                                <mat-placeholder>
+                                    Nombre
+                                    <span class="star">*</span>
+                                </mat-placeholder>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="input-full">
+                                <input matInput type="text" formControlName="paternalSurname">
+                                <mat-placeholder>
+                                    Apelido Paterno
+                                    <span class="star">*</span>
+                                </mat-placeholder>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="input-full">
+                                <input matInput formControlName="maternalSurname">
+                                <mat-placeholder>
+                                    Apelido Materno
+                                </mat-placeholder>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="input-full">
+                                <input matInput type="password" formControlName="password">
+                                <mat-placeholder>
+                                    Contraseña
+                                    <span class="star">*</span>
+                                </mat-placeholder>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="input-full">
+                                <input matInput formControlName="confirmPassword" type="password">
+                                <mat-placeholder>
+                                    Repita Contraseña
+                                    <span class="star">*</span>
+                                </mat-placeholder>
+                                <mat-error *ngIf="userForm.get('confirmPassword').hasError('MatchPassword')">
+                                    Las contraseñas no coinciden
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="input-full">
+                                <input matInput type="text" formControlName="email">
+                                <mat-placeholder>
+                                    Correo Electrónico
+                                    <span class="star">*</span>
+                                </mat-placeholder>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="input-full">
+                                <input matInput type="text" formControlName="phone" onlyNumber [maxLength]="10">
+                                <mat-placeholder>
+                                    Teléfono
+                                    <span class="star">*</span>
+                                </mat-placeholder>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-checkbox formControlName="isActive">
+                                Activo
+                            </mat-checkbox>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="buttons-wrapper">
+                                <a mat-button color="warn" [routerLink]="[ '/application/users']" *ngIf="!sendData">
+                                    <mat-icon>close</mat-icon> Cancelar
+                                </a>
+                                <button mat-button color="primary" [disabled]="userForm.invalid || sendData">
+                                  <mat-icon>check</mat-icon> Guardar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

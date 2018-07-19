@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <loading #loading></loading>
+
+        <mat-card *ngIf="!loadingComponent.isVisible()">
+            <mat-card-header *ngIf="vehicles.length > 0">
+                <mat-card-title>Lista de vehiculos</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive" *ngIf="vehicles.length > 0">
+                            <table class="table">
+                                <thead>
+                                    <th>Tipo</th>
+                                    <th>Placa</th>
+                                    <th>Fecha SOAT</th>
+                                    <th>Modelo</th>
+                                    <th>Acciones</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let vehicle of vehicles">
+                                        <td>{{ vehicle.type }}</td>
+                                        <td>{{ vehicle.plate }}</td>
+                                        <td>{{ vehicle.dateSOAT }}</td>
+                                        <td class="text-capitalize">{{ vehicle.model }}</td>
+                                        <td>
+                                            <a mat-icon-button color="primary" matTooltip="Editar Vehiculo" matTooltipPosition="after" [routerLink]="[ 'edit', vehicle._id ]">
+                                                <mat-icon>edit</mat-icon>
+                                            </a>
+                                            <button mat-icon-button color="warn" matTooltip="Eliminar Vehiculo" matTooltipPosition="after" (click)="deleteVehicle(vehicle._id)">
+                                              <mat-icon>delete</mat-icon>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <empty-collection [showComponent]="vehicles?.length === 0"></empty-collection>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <div class="row" *ngIf="!loadingComponent.isVisible()">
+            <div class="col-md-12 btn-add">
+                <a mat-fab [routerLink]="[ 'create']" color="primary">
+                    <mat-icon>control_point</mat-icon>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

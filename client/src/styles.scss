@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    margin: 0px;
+    font-family: 'Roboto';
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.p-25 {
+    padding: 25px;
+}
+
+.p-t-20 {
+    padding-top: 20px;
+}
+
+.input-full {
+    width: 100%;
+}
+
+.p-t-25 {
+    padding-top: 25px;
+}
+
+.m-0 {
+    margin: 0px;
+}
+
+.flex-center {
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.height-100-vh {
+    height: 100vh;
+}
+
+.buttons-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";

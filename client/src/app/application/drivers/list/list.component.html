@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <loading #loading></loading>
+
+        <mat-card *ngIf="!loadingComponent.isVisible()">
+            <mat-card-header *ngIf="drivers.length > 0">
+                <mat-card-title>Lista de Conductores</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive" *ngIf="drivers.length > 0">
+                            <table class="table">
+                                <thead>
+                                    <th>Nombre</th>
+                                    <th>Tipo Documento</th>
+                                    <th>Número Documento</th>
+                                    <th>Sexo</th>
+                                    <th>Acciones</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let driver of drivers">
+                                        <td>{{ driver.fullName() }}</td>
+                                        <td>{{ driver.typeDocument }}</td>
+                                        <td>{{ driver.numberDocument }}</td>
+                                        <td class="text-capitalize">{{ driver.gender }}</td>
+                                        <td>
+                                            <a mat-icon-button color="primary" matTooltip="Editar Conductor" matTooltipPosition="after" [routerLink]="[ 'edit', driver._id ]">
+                                                <mat-icon>edit</mat-icon>
+                                            </a>
+                                            <button mat-icon-button color="warn" matTooltip="Eliminar Conductor" matTooltipPosition="after" (click)="deleteDriver(driver._id)">
+                                              <mat-icon>delete</mat-icon>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <empty-collection [showComponent]="drivers?.length === 0"></empty-collection>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <div class="row" *ngIf="!loadingComponent.isVisible()">
+            <div class="col-md-12 btn-add">
+                <a mat-fab [routerLink]="[ 'create']" color="primary">
+                    <mat-icon>control_point</mat-icon>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
