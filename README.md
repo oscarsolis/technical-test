@@ -29,3 +29,7 @@ El siguiente proyecto es una prueba técnica para la vacante de desarrollador fu
 ## Dificultades
 
 - Unas de las dificultades encontradas fue la creación y diseño de una interfaz simple pero funcional y entendible para el usuario final. 
+
+
+## Tiempo De Desarrollo
+- 24 hrs
