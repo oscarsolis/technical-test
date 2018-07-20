@@ -1,60 +1,51 @@
-<div class="row">
-    <div class="col-md-12">
+<div class="container">
 
-        <loading #loading></loading>
+    <div class="row flex-center height-100-vh">
 
-        <mat-card class="m-t-50" *ngIf="!loadingComponent.isVisible()">
-            <mat-card-header *ngIf="routes.length > 0">
-                <mat-card-title>Lista de rutas</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="table-responsive" *ngIf="routes.length > 0">
-                            <table class="table">
-                                <thead>
-                                    <th>Conductor</th>
-                                    <th>Placa Vehículo</th>
-                                    <th>Fecha Inicio</th>
-                                    <th>Fecha Fin</th>
-                                    <th>Pasajeros</th>
-                                    <th>Empresa</th>
-                                    <th>Acciones</th>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let route of routes">
-                                        <td>{{ route.driver.fullName() }}</td>
-                                        <td>{{ route.vehicle.plate }}</td>
-                                        <td>
-                                            {{ route.startTime | amLocale:'es' | amDateFormat:'DD MMMM YYYY, h:mm a'}}
-                                        </td>
-                                        <td>
-                                            {{ route.endTime | amLocale:'es' | amDateFormat:'DD MMMM YYYY, h:mm a'}}
-                                        </td>
-                                        <td>{{ route.passengers }}</td>
-                                        <td>{{ route.company }}</td>
-                                        <td>
-                                            <button mat-icon-button color="warn" matTooltip="Desasignar Ruta" matTooltipPosition="after" (click)="deleteroute(route._id)">
-                                              <mat-icon>close</mat-icon>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+        <div class="col-md-6 col-sm-10">
+
+            <mat-card>
+
+                <mat-card-content>
+
+                    <form [formGroup]="loginForm" (ngSubmit)="logIn()">
+
+                        <p class="p-15 text-center text-danger">{{ errorMsg }}</p>
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <mat-form-field class="input-full">
+
+                                    <input matInput formControlName="email" type="email">
+                                    <mat-placeholder>
+                                        E-mail </mat-placeholder>
+                                </mat-form-field>
+                            </div>
                         </div>
 
-                        <empty-collection [showComponent]="routes?.length === 0"></empty-collection>
-                    </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
+                        <div class="row">
 
-        <div class="row" *ngIf="!loadingComponent.isVisible()">
-            <div class="col-md-12 btn-add">
-                <a mat-fab [routerLink]="[ 'assign']" color="primary">
-                    <mat-icon>control_point</mat-icon>
-                </a>
-            </div>
+                            <div class="col-md-12">
+
+                                <mat-form-field class="input-full">
+
+                                    <input matInput formControlName="password" type="password">
+                                    <mat-placeholder>
+                                        Contraseña </mat-placeholder>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="footer text-center">
+                            <button mat-raised-button color="primary" [disabled]="loginForm.invalid || loading">
+                              {{ loading ? 'Verificando...' : 'Entrar' }}
+                            </button>
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
         </div>
     </div>
 </div>

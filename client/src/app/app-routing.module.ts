@@ -31,6 +31,14 @@ const routes: Routes = [
     canActivate: [LoginGuard],
     canLoad: [LoginGuard]
   },
+  {
+    path: 'not-found',
+    loadChildren: './not-found/not-found.module#NotFoundModule'
+  },
+  {
+    path: '**',
+    redirectTo: 'not-found',
+  }
 ];
 
 @NgModule({
