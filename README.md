@@ -10,5 +10,5 @@ El siguiente proyecto contiene dos carpetas las cuales son:
 
 ## Tabla de contenidos
 
-- [Servidor] (server/README.md)
-- [Cliente SPA] (client/README.md)
+- [Servidor](server/README.md)
+- [Cliente SPA](client/README.md)

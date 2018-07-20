@@ -1,27 +1,25 @@
 # Client
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+Para la construcción del cliente web se uso como tecnológica angular en su versión 5.2.1.
 
-## Development server
+## Dependencias
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- **[Angular Material:](https://v5.material.angular.io/)** 
+- **[NgxMoment:](https://github.com/urish/ngx-moment)**
+- **[NgxProgressBar:](https://github.com/MurhafSousli/ngx-progressbar)**
+- **[NguiMap:](https://github.com/ng2-ui/map)**
+- **[Snackbar.js:](https://www.polonel.com/snackbar)**
+- **[Bootrstrap 4:](https://getbootstrap.com/)**
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Requerimientos
+- Angular CLI 
+- NodeJs >= 8
+- NPM
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Instalación
+Ejecute los siguientes comandos en su terminal
+```
+  npm install
+  ng serve -o
+```
