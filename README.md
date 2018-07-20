@@ -15,7 +15,7 @@ El siguiente proyecto es una prueba técnica para la vacante de desarrollador fu
 
 ## Puntos extras
  
-- Creación y uso de servicios REST Full.
+- Creación y uso de servicios REST.
 - Cliente SPA.
 - Permitir cambiar el Branding de la aplicación fácilmente.
 - Correcta reutilización de código.
