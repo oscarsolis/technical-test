@@ -104,7 +104,6 @@ exports.delete = async(req, res, next) => {
       respond(res, { 'message': 'not found user' }, 404);
     }
   } catch (error) {
-    console.log(error);
     respond(res, error, 500);
   }
 };

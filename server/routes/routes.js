@@ -4,6 +4,8 @@ const passport = require('passport');
 const routeController = require('../controllers/route');
 
 router
-  .post('/assign-route', routeController.assignRoute)
+  .post('/assign', routeController.assignRoute)
+  .post('/unassign', routeController.unassignRoute)
+  .get('/', routeController.index);
 
 module.exports = router;

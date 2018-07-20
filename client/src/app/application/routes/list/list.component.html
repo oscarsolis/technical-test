@@ -34,7 +34,7 @@
                                         <td>{{ route.passengers }}</td>
                                         <td>{{ route.company }}</td>
                                         <td>
-                                            <button mat-icon-button color="warn" matTooltip="Desasignar Ruta" matTooltipPosition="after" (click)="deleteroute(route._id)">
+                                            <button mat-icon-button color="warn" matTooltip="Desasignar Ruta" matTooltipPosition="after" (click)="unassign(route._id)">
                                               <mat-icon>close</mat-icon>
                                             </button>
                                         </td>

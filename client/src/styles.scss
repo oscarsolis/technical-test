@@ -34,6 +34,10 @@ a {
     margin-bottom: 50px;
 }
 
+.m-t-50 {
+    margin-top: 50px;
+}
+
 .p-b-50 {
     padding-bottom: 50px;
 }
@@ -56,5 +60,5 @@ a {
 
 @import "~bootstrap/scss/bootstrap.scss";
 @import "~ng-pick-datetime/assets/style/picker.min.css";
-//@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+//@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';

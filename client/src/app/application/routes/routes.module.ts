@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RoutesRoutingModule } from './routes-routing.module';
 
 // components
+import { ListComponent } from './list/list.component';
 import { AssignComponent } from './assign/assign.component';
 
 // modules
@@ -14,6 +15,7 @@ import {
   OwlDateTimeModule,
   OwlNativeDateTimeModule
 } from 'ng-pick-datetime';
+import { MomentModule } from 'ngx-moment';
 
 // others
 import { DefaultIntl } from '../../config/lang-datepicker.config';
@@ -36,6 +38,7 @@ import {
 
 @NgModule({
   imports: [
+    MomentModule,
     SharedModule,
     CommonModule,
     MatIconModule,
@@ -55,6 +58,7 @@ import {
     }),
   ],
   declarations: [
+    ListComponent,
     AssignComponent
   ],
   providers: [

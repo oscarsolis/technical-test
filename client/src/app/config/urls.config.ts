@@ -8,4 +8,5 @@ export const URLS = {
   logsCrud: `${apiUrl}/logs`,
   driversCrud: `${apiUrl}/drivers`,
   vehiclesCrud: `${apiUrl}/vehicles`,
+  routeCrud: `${apiUrl}/routes`
 }

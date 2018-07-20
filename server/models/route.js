@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 const lang = require('./../config/lang/');
 
 const RouteSchema = new Schema({
-  user: {
+  driver: {
    	type: Schema.Types.ObjectId,
     trim: true,
-    ref: 'User',
+    ref: 'Driver',
     required: [true, lang.validations.required]
   },
   vehicle: {
@@ -55,7 +55,8 @@ const RouteSchema = new Schema({
   },
   status: {
   	type: String,
-  	trim: true
+  	trim: true,
+  	default: 'active'
   }
 }, {
     versionKey: false,
@@ -75,22 +76,29 @@ RouteSchema.statics = {
 	listNotDeleted: function(options) {
     options = Object.assign({ 'deleted': false }, options);
     return this.find(options)
-    					.populate('user')
+    					.populate('driver')
     					.populate('vehicle')
     					.exec();
   },
   listDeleted: function(options) {
     options = Object.assign({ 'deleted': true }, options);
     return this.find(options)
-    					.populate('user')
+    					.populate('driver')
     					.populate('vehicle')
     					.exec();
   },
   listAll: function(options) {
     return this.find(options)
-    					.populate('user')
+    					.populate('driver')
     					.populate('vehicle')
     					.exec();
+  },
+  listActives: function(options) {
+  	options = Object.assign({ 'deleted': false, 'status': 'active' }, options);
+  	return this.find(options)
+	  						.populate('driver')
+	    					.populate('vehicle')
+	    					.exec();
   }
 };
 

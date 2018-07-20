@@ -2,7 +2,7 @@
     <div class="col-md-12 p-b-50">
         <loading #loading></loading>
 
-        <mat-card class="example-card" *ngIf="!loading.isVisible()">
+        <mat-card class="m-t-50" *ngIf="!loading.isVisible()">
             <mat-card-header>
                 <mat-card-title>Asignación de rutas</mat-card-title>
             </mat-card-header>
@@ -80,9 +80,8 @@
                                     <span class="star">*</span>
                                 </mat-placeholder>
                             </mat-form-field>
-                            <ngui-map [options]="mapOptions" (mapReady$)="mapReady($event,'map1')" class="map">
+                            <ngui-map [options]="mapOptions" (mapReady$)="mapReady($event,'map1')" class="map" (center_changed)="centerChanged($event, 'map1')">
                                 <img src="assets/imgs/marker_start.png" alt="Punto final" class="img-marker">
-
                             </ngui-map>
                         </div>
                         <div class="col-md-6">
@@ -94,7 +93,7 @@
                                     <span class="star">*</span>
                                 </mat-placeholder>
                             </mat-form-field>
-                            <ngui-map [options]="mapOptions" (mapReady$)="mapReady($event,'map2')" class="map">
+                            <ngui-map [options]="mapOptions" (mapReady$)="mapReady($event,'map2')" class="map" (center_changed)="centerChanged($event, 'map2')">
                                 <img src="assets/imgs/marker_end.png" alt="Punto final" class="img-marker">
                             </ngui-map>
                         </div>
@@ -103,6 +102,9 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="buttons-wrapper">
+                                <a mat-button color="warn" [routerLink]="[ '/application/routes']" *ngIf="!sendData">
+                                    <mat-icon>close</mat-icon> Cancelar
+                                </a>
                                 <button mat-button color="primary" [disabled]="routeForm.invalid || sendData">
                                     <mat-icon>check</mat-icon> {{ sendData ? 'Enviando...'  : 'Guardar' }}
                                 </button>

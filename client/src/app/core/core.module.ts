@@ -10,8 +10,9 @@ import {
   UserService,
   AuthService,
   UtilsService,
-  DriverService,
   DebugService,
+  RouteService,
+  DriverService,
   VehicleService
 } from './services';
 
@@ -35,8 +36,9 @@ import { GlobalErrorHandler } from './interceptors/error-handler';
     UserService,
     AuthService,
     UtilsService,
-    DriverService,
     DebugService,
+    RouteService,
+    DriverService,
     VehicleService,
     // guards
     AuthGuard,

@@ -9,7 +9,8 @@ import {
   UtilsService,
   DebugService,
   DriverService,
-  VehicleService
+  VehicleService,
+  RouteService
 } from '../../../core/services';
 
 // models
@@ -32,6 +33,8 @@ import { MESSAGES } from '../../../config/messages.config';
 
 // components
 import { LoadingComponent } from '../../../shared/components';
+import { isDefined } from '../../../core/utils/util';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-assign',
@@ -45,6 +48,16 @@ export class AssignComponent {
 
   //
   vehicles: Array<Vehicle> = [];
+
+  //
+  startPoint: any = {
+    coordinates: []
+  }
+
+  //
+  endPoint: any = {
+    coordinates: []
+  }
 
   //
   routeForm: FormGroup;
@@ -71,6 +84,7 @@ export class AssignComponent {
     private _utils: UtilsService,
     private _debug: DebugService,
     private formBuilder: FormBuilder,
+    private _routeService: RouteService,
     private _driverService: DriverService,
     private _vehicleService: VehicleService
   ) {
@@ -103,7 +117,28 @@ export class AssignComponent {
    *
    */
   createAssign(): void {
-    console.log(this.routeForm.value);
+    let data = Object.assign(this.routeForm.value, { endPoint: this.endPoint })
+    data = Object.assign(data, { startPoint: this.startPoint });
+    this.sendData = true;
+    this._routeService
+      .assign(data)
+      .then(result => {
+        this.sendData = false;
+        this.form.resetForm();
+        this.endPoint.coordinates = [];
+        this.startPoint.coordinates = [];
+        this._utils.showToast(MESSAGES.registerSuccess('Ruta'));
+        this._debug.success('AssignComponent createAssign()', result);
+      })
+      .catch((error: HttpErrorResponse) => {
+        this.sendData = false;
+        let message: string = MESSAGES.registerError;
+        if (error.status === 422) {
+          message = error.error.message;
+        }
+        this._utils.showToast(message);
+        this._debug.error('AssignComponent createAssign()', error);
+      })
   }
 
   /**
@@ -116,8 +151,7 @@ export class AssignComponent {
       startTime: ['', Validators.required],
       endTime: ['', Validators.required],
       passengers: ['', Validators.required],
-      company: ['', Validators.required],
-      status: ['active', Validators.required]
+      company: ['', Validators.required]
     })
   }
 
@@ -137,13 +171,41 @@ export class AssignComponent {
    * @param event
    * @param map
    */
+  centerChanged(event, map: string): void {
+    if (map === 'map2') {
+      if (isDefined(this.mapEnd)) {
+        this.endPoint.coordinates = this.getCoordinates(this.mapEnd.getCenter());
+      }
+    } else {
+      if (isDefined(this.mapEnd)) {
+        this.startPoint.coordinates = this.getCoordinates(this.mapStart.getCenter());
+      }
+    }
+  }
+
+
+  /**
+   *
+   * @param event
+   * @param map
+   */
   placeChanged(event, map: string) {
-    console.log(event, map);
     if (map === 'map1') {
       this.mapStart.setCenter(event.geometry.location);
     } else {
       this.mapEnd.setCenter(event.geometry.location);
     }
+  }
+
+  /**
+   *
+   * @param latLng
+   */
+  getCoordinates(latLng: google.maps.LatLng): Array<number> {
+    return [
+      latLng.lng(),
+      latLng.lat()
+    ]
   }
 
 }

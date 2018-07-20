@@ -1,4 +1,5 @@
 export { LogService } from './log.service';
+export { RouteService } from './route.service';
 export { AuthService } from './auth.service';
 export { UserService } from './user.service';
 export { UtilsService } from './utils.service';

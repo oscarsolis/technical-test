@@ -3,11 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 // components
 import { AssignComponent } from './assign/assign.component';
+import { ListComponent } from './list/list.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AssignComponent,
+    component: ListComponent,
     pathMatch: 'full'
   },
   {
